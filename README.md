@@ -34,7 +34,7 @@ bot.on('message', async message => {
     if (messsage.content === '.bot') {
     try {
         var botData = await HD.getBot(args[0]);
-        message.channel.send(`${botData.botID} by ${botData.ownerID} with prefix ${botData.prefix}`); // fetchUser coming soon. 
+        message.channel.send(`${botData.bot.tag} by ${botData.owner.tag} with prefix ${botData.prefix}`);
         } catch(error) {
         if(error.message === '[HDAPI] Bot not found') return message.channel.send('The bot ID you provide is not registered *yet* on HD Development');
         return console.log(error;
@@ -61,7 +61,7 @@ bot.on('message', message => {
     if (messsage.content === '.bot') {
     try {
         HD.getBot(args[0]).then(botData => {
-        message.channel.send(`${botData.botID} by ${botData.ownerID} with prefix ${botData.prefix}`); // fetchUser coming soon.
+        message.channel.send(`${botData.bot.tag} by ${botData.owner.tag} with prefix ${botData.prefix}`);
         } catch(error) {
         if (error.message === '[HDAPI] Bot not found') return message.channel.send('The bot ID you provided is not registered *yet* on HD Developement');
         }
