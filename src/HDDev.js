@@ -93,7 +93,6 @@ async function fetchUser(userID, request) {
         createdTimestamp: body.createdTimestamp
     };
        userResolved.bots = body.bots;
-    }
 
     return userResolved;
 }
