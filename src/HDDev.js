@@ -10,7 +10,7 @@ module.exports = class HDDev {
   * Create new HDDev Wrapper Client
   */
   constructor(clientID, ownerID){
-    this._baseURL = 'https://hd-development.glitch.me';
+    this._baseURL = 'hd-development.glitch.me';
     this._baseAPIURL = this._baseURL + '/api';
     const request = new HDRequest(this._baseURL);
     if (isNaN(clientID)) throw new Error('[HDAPI] Invalid clientID options');
