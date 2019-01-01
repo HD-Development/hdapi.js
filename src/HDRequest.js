@@ -1,6 +1,6 @@
 const https = require('https');
 const version = require('../package.json').version;
-console.log(version);
+
 class HDRequest {
     /**
      * Creates HDRequest Client
