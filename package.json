@@ -1,18 +1,20 @@
 {
   "name": "hdapi.js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple library for connecting with the hd-development.glitch.me API.",
   "main": "index.js",
   "scripts": {
     "test": "eslint --ignore-path .gitignore ."
   }, 
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
+    "type": "git", 
+    "url": "git@github.com:HD-Development/hdapi.js.git"
   },
   "license": "MIT",
   "keywords": [
     "node",
     "api",
-    "bot"
+    "bot", 
+    "dev" 
   ]
 }
