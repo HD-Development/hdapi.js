@@ -24,6 +24,8 @@ const Discord = require('discord.js');
 const HDdev = require('hddapi.js');
 
 const bot = new Discord.Client();
+
+// In the future, This will requires you to have an access token to HD API
 const HD = new HDdev("your bot's user id", "your id / bot owner id");
 
 bot.on('ready', () => console.log("Ready!"));
@@ -51,6 +53,8 @@ const Discord = require('discord.js');
 const HDdev = require('hdapi.js');
 
 const bot = new Discord.Client();
+
+// In the future, This will requires you to have an access token to HD API
 const HD = new HDdev("your bot's user id", "your id / bot owner id");
 
 bot.on('ready', () => console.log("Ready!"));
