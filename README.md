@@ -5,8 +5,6 @@ An API Wrapper for [HD Development API](https://hd-development.glitch.me/api/bot
 <div align="center">
     <p>
 		<a href="https://npmjs.com/package/hdapi.js"><img src="https://nodei.co/npm/hdapi.js.png?downloads=true&stars=false"/></a>
-		<br>
-		<a href="https://travis-ci.com/DiscordBotsDev/dbdapi.js"><img src="https://travis-ci.com/DiscordBotsDev/dbdapi.js.svg"/></a>
 	</p>
 </div>
 
