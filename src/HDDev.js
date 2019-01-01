@@ -76,9 +76,8 @@ module.exports = class HDDev {
             body.bot.ownedBy.bots = bodyBotOwnedByBots;
             return body;
         };
-    }
-  }
-}
+    };
+  };
 
 async function fetchUser(userID, request) {
     let { body: user } = await request.get(`fetchUser?id=${userID}`);
