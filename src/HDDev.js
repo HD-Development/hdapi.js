@@ -35,7 +35,78 @@ module.exports = class HDDev {
     const response = await request.get(`bots/${userID}`);
     const bodyRaw = await response.body;
     if (bodyRaw.error === "bot_not_found")  return new Error('[HDAPI] Bot not found');
-      return bodyRaw;
+      const owner = await fetchUser(bodyRaw.ownerID, request);
+            const botUser = await fetchUser(bodyRaw.botID, request);
+            const body = {
+                owner: {
+                    id: owner.id,
+                    username: owner.username,
+                    discriminator: owner.discriminator,
+                    tag: owner.tag,
+                    avatar: owner.avatar,
+                    avatarURL: owner.avatarURL,
+                    displayAvatarURL: owner.displayAvatarURL,
+                    bot: owner.bot,
+                    createdAt: new Date(owner.createdTimestamp),
+                    createdTimestamp: owner.createdTimestamp,
+                    bots: owner.bots
+                },
+                bot: {
+                    id: botUser.id,
+                    username: botUser.username,
+                    discriminator: botUser.discriminator,
+                    tag: botUser.tag,
+                    avatar: botUser.avatar,
+                    avatarURL: botUser.avatarURL,
+                    displayAvatarURL: botUser.displayAvatarURL,
+                    bot: botUser.bot,
+                    createdAt: new Date(botUser.createdTimestamp),
+                    createdTimestamp: botUser.createdTimestamp,
+                    ownedBy: botUser.ownedBy
+                },
+                prefix: bodyRaw.prefix,
+                accepted: bodyRaw.accepted
+            };
+            let bodyBotOwnedByBots = body.bot.ownedBy.bots;
+            let bodyBotOwnedByCreatedTimestamp = body.bot.ownedBy.createdTimestamp;
+            delete body.bot.ownedBy.bots;
+            delete body.bot.ownedBy.createdTimestamp;
+            body.bot.ownedBy.createdAt = new Date(bodyBotOwnedByCreatedTimestamp);
+            body.bot.ownedBy.createdTimestamp = bodyBotOwnedByCreatedTimestamp;
+            body.bot.ownedBy.bots = bodyBotOwnedByBots;
+            return body;
+        };
     }
   }
+}
+
+async function fetchUser(userID, request) {
+    let { body: user } = await request.get(`fetchUser?id=${userID}`);
+
+    if (user.error === "unknown_user") return undefined;
+
+    var userResolved = null;
+
+    var body = user;
+
+    userResolved = {
+        id: body.id,
+        username: body.username,
+        discriminator: body.discriminator,
+        tag: body.tag,
+        avatar: body.avatar,
+        avatarURL: body.avatarURL,
+        displayAvatarURL: body.displayAvatarURL,
+        bot: body.bot,
+        createdAt: new Date(body.createdTimestamp),
+        createdTimestamp: body.createdTimestamp
+    };
+
+    if (user.bot === true || body.bot === true) {
+        userResolved.ownedBy = body.ownedBy;
+    } else {
+        userResolved.bots = body.bots;
+    }
+
+    return userResolved;
 }
