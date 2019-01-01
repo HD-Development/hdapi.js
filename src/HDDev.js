@@ -61,19 +61,11 @@ module.exports = class HDDev {
                     displayAvatarURL: botUser.displayAvatarURL,
                     bot: botUser.bot,
                     createdAt: new Date(botUser.createdTimestamp),
-                    createdTimestamp: botUser.createdTimestamp,
-                    ownedBy: botUser.ownedBy
+                    createdTimestamp: botUser.createdTimestamp
                 },
                 prefix: bodyRaw.prefix,
                 accepted: bodyRaw.accepted
             };
-            let bodyBotOwnedByBots = body.bot.ownedBy.bots;
-            let bodyBotOwnedByCreatedTimestamp = body.bot.ownedBy.createdTimestamp;
-            delete body.bot.ownedBy.bots;
-            delete body.bot.ownedBy.createdTimestamp;
-            body.bot.ownedBy.createdAt = new Date(bodyBotOwnedByCreatedTimestamp);
-            body.bot.ownedBy.createdTimestamp = bodyBotOwnedByCreatedTimestamp;
-            body.bot.ownedBy.bots = bodyBotOwnedByBots;
             return body;
         };
     };
@@ -100,11 +92,7 @@ async function fetchUser(userID, request) {
         createdAt: new Date(body.createdTimestamp),
         createdTimestamp: body.createdTimestamp
     };
-
-    if (user.bot === true || body.bot === true) {
-        userResolved.ownedBy = body.ownedBy;
-    } else {
-        userResolved.bots = body.bots;
+       userResolved.bots = body.bots;
     }
 
     return userResolved;
