@@ -10,6 +10,9 @@
     "type": "git", 
     "url": "git+https://github.com/HD-Development/hdapi.js.git"
   },
+  "bugs": {
+    "url": "https://github.com/HD-Development/hdapi.js/issues"
+  },
   "homepage": "https://hd-development.glitch.me/",
   "license": "MIT",
   "keywords": [
