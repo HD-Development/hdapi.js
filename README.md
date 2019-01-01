@@ -13,7 +13,7 @@ Coming soon but there an examples :P
 
 ## How to install
 ```bash
-npm install dbdapi.js
+npm install hdapi.js
 ```
 
 # Examples
