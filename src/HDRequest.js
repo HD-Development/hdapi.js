@@ -10,7 +10,7 @@ class HDRequest {
     constructor(baseURL) {
         this.baseURL = baseURL;
         this.baseAPIURL = baseURL + '/api';
-        this.version = '1.3.0-hdrequest';
+        this.version = version;
 
         /**
          * Creates a GET request
@@ -22,7 +22,7 @@ class HDRequest {
             return new Promise((resolve, reject) => {
                 const response = {
                     method: 'GET',
-                    version: '1.3.0-hdrequest',
+                    version: version,
                     raw: '',
                     body: null,
                     status: null,
@@ -74,7 +74,7 @@ class HDRequest {
             return new Promise((resolve, reject) => {
                 const response = {
                     method: 'POST',
-                    version: '1.3.0-hdrequest',
+                    version: version,
                     raw: '',
                     body: null,
                     status: null,
