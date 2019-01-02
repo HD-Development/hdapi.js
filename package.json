@@ -4,10 +4,10 @@
   "description": "A simple library for connecting with the https://hd-development.glitch.me API.",
   "main": "index.js",
   "scripts": {
-    "test": "eslint --ignore-path .gitignore ."
+        "pretest": "eslint --ignore-path .gitignore ."
   }, 
   "repository": {
-    "type": "git", 
+    "type": "git",
     "url": "git+https://github.com/HD-Development/hdapi.js.git"
   },
   "bugs": {
@@ -18,7 +18,13 @@
   "keywords": [
     "node",
     "api",
-    "bot", 
-    "dev" 
-  ]
+    "bot",
+    "dev"
+  ],
+  "author": "Sharif",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.11.1",
+    "eslint-config-strongloop": "^2.1.0"
+  }
 }
