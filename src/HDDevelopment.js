@@ -1,13 +1,13 @@
 const HDRequest = require('./HDRequest.js');
 
 /**
-* HDDev Client
+* HDDevelopment Client
 */
 
-module.exports = class HDDev {
+module.exports = class HDDevelopment {
   
   /**
-  * Create new HDDev Wrapper Client
+  * Create new HDDevelopment Wrapper Client
   */
   constructor(clientID, ownerID){
     this.baseURL = 'hd-development.glitch.me';
@@ -15,7 +15,7 @@ module.exports = class HDDev {
     const request = new HDRequest(this.baseURL);
     if (isNaN(clientID)) throw new Error('[HDAPI] Invalid clientID options');
     if (!ownerID) throw new Error('[HDAPI] no ownerID options provided');
-    if (isNaN(ownerID)) return new Error('[HDAPI] Invalid ownerID options');
+    if (isNaN(ownerID)) throw new Error('[HDAPI] Invalid ownerID options');
     this.version = require('../package.json').version;
     
     /**
@@ -34,7 +34,7 @@ module.exports = class HDDev {
     var userID = ID || clientID;
     const response = await request.get(`bots/${userID}`);
     const bodyRaw = await response.body;
-    if (bodyRaw.error === "bot_not_found")  return new Error('[HDAPI] Bot not found');
+    if (bodyRaw.error === "bot_not_found")  throw new Error('[HDAPI] Bot not found');
       const owner = await fetchUser(bodyRaw.ownerID, request);
             const botUser = await fetchUser(bodyRaw.botID, request);
             const body = {
@@ -92,6 +92,7 @@ async function fetchUser(userID, request) {
         createdAt: new Date(body.createdTimestamp),
         createdTimestamp: body.createdTimestamp
     };
+    
        userResolved.bots = body.bots;
 
     return userResolved;
