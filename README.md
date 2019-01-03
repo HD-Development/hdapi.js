@@ -11,8 +11,7 @@ An API Wrapper for [HD Development API](https://hd-development.glitch.me/api/bot
 		</p>
 </div>
 
-# Documentation
-Coming soon but there an examples :P
+> [Documentation ( WIP )](https://hd-development.github.io)
 
 ## How to install
 ```bash

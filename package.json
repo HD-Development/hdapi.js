@@ -1,11 +1,11 @@
 {
   "name": "hdapi.js",
-  "version": "0.2.7-beta",
+  "version": "0.2.8-beta",
   "description": "A simple library for connecting with the https://hd-development.glitch.me API.",
   "main": "index.js",
   "scripts": {
-        "test": "eslint --ignore-path .gitignore ."
-  }, 
+    "test": "eslint --ignore-path .gitignore ."
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HD-Development/hdapi.js.git"
