@@ -1,4 +1,5 @@
 const HDRequest = require('./HDRequest.js');
+const FetchError = require('./structures/FetchError.js');
 
 /**
 * HDDevelopment Client
@@ -13,9 +14,10 @@ module.exports = class HDDevelopment {
     this.baseURL = 'hd-development.glitch.me';
     this.baseAPIURL = this.baseURL + '/api';
     const request = new HDRequest(this.baseURL);
-    if (isNaN(clientID)) throw new Error('[HDAPI] Invalid clientID options');
-    if (!ownerID) throw new Error('[HDAPI] no ownerID options provided');
-    if (isNaN(ownerID)) throw new Error('[HDAPI] Invalid ownerID options');
+    if(!clientID) throw new ReferenceError('[HDAPI] options.clientID must be supplied.');
+    if (isNaN(clientID)) throw new TypeError('[HDAPI] Invalid clientID options');
+    if (!ownerID) throw new ReferenceError('[HDAPI] options.ownerID must be supplied.');
+    if (isNaN(ownerID)) throw new TypeError('[HDAPI] Invalid ownerID options');
     this.version = require('../package.json').version;
     
     /**
@@ -30,11 +32,11 @@ module.exports = class HDDevelopment {
     * @returns {Promise<Object>} A promise that contains data of the bot
     */
     this.getBot = async (ID) => {
-    if (!ID || !clientID) throw new Error('[HDAPI:getBot] No ID was Provided.');
+    if (!ID || !clientID) throw new ReferenceError('[HDAPI:getBot] The bot ID must be supplied.');
     var userID = ID || clientID;
     const response = await request.get(`bots/${userID}`);
     const bodyRaw = await response.body;
-    if (bodyRaw.error === "bot_not_found")  throw new Error('[HDAPI] Bot not found');
+    if (bodyRaw.error === "bot_not_found")  throw new FetchError('[HDAPI] Bot not found');
       const owner = await fetchUser(bodyRaw.ownerID, request);
             const botUser = await fetchUser(bodyRaw.botID, request);
             const body = {
