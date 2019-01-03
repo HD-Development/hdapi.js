@@ -68,7 +68,7 @@ module.exports = class HDDevelopment {
             };
             return body;
         };
-    };
+    }
   };
 
 async function fetchUser(userID, request) {
