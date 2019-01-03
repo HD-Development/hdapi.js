@@ -14,9 +14,9 @@ module.exports = class HDDevelopment {
     this.baseURL = 'hd-development.glitch.me';
     this.baseAPIURL = this.baseURL + '/api';
     const request = new HDRequest(this.baseURL);
-    if(!clientID) throw new ReferenceError('[HDAPI] options.clientID must be supplied.');
+    if(!clientID) throw new ReferenceError('[HDAPI] clientID options must be supplied.');
     if (isNaN(clientID)) throw new TypeError('[HDAPI] Invalid clientID options');
-    if (!ownerID) throw new ReferenceError('[HDAPI] options.ownerID must be supplied.');
+    if (!ownerID) throw new ReferenceError('[HDAPI] ownerID options must be supplied.');
     if (isNaN(ownerID)) throw new TypeError('[HDAPI] Invalid ownerID options');
     this.version = require('../package.json').version;
     
