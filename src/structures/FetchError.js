@@ -15,4 +15,4 @@ module.exports = class FetchError extends Error {
 
         if (Error.captureStackTrace) Error.captureStackTrace(this, FetchError);
     }
-}
+};
