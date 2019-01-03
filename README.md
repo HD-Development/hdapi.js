@@ -1,10 +1,12 @@
-# HD API
+# HD Development API
 
 An API Wrapper for [HD Development API](https://hd-development.glitch.me/api/bots)
 
 <div align="center">
     <p>
 		<a href="https://npmjs.com/package/hdapi.js"><img src="https://nodei.co/npm/hdapi.js.png?downloads=true&stars=false"/></a>
+		<br>
+		[![Discord](https://discordapp.com/api/guilds/480207403992743937/embed.png)](https://discord.gg/GnwnMpB)
 	</p>
 </div>
 
@@ -26,7 +28,7 @@ const HDdev = require('hddapi.js');
 const bot = new Discord.Client();
 
 // In the future, This will requires you to have an access token to HD API
-const HD = new HDdev("your bot's user id", "your id / bot owner id");
+const HDapi = new HDdev("your bot's user id", "your id / bot owner id");
 
 bot.on('ready', () => console.log("Ready!"));
 
@@ -35,7 +37,7 @@ bot.on('message', async message => {
 
     if (messsage.content === '.bot') {
     try {
-        var botData = await HD.getBot(args[0]);
+        var botData = await HDapi.getBot(args[0]);
         message.channel.send(`${botData.bot.tag} by ${botData.owner.tag} with prefix ${botData.prefix}`);
         } catch(error) {
         if(error.message === '[HDAPI] Bot not found') return message.channel.send('The bot ID you provide is not registered *yet* on HD Development');
@@ -55,7 +57,7 @@ const HDdev = require('hdapi.js');
 const bot = new Discord.Client();
 
 // In the future, This will requires you to have an access token to HD API
-const HD = new HDdev("your bot's user id", "your id / bot owner id");
+const HDapi = new HDdev("your bot's user id", "your id / bot owner id");
 
 bot.on('ready', () => console.log("Ready!"));
 
@@ -64,10 +66,10 @@ bot.on('message', message => {
 
     if (messsage.content === '.bot') {
     try {
-        HD.getBot(args[0]).then(botData => {
+        HDapi.getBot(args[0]).then(botData => {
         message.channel.send(`${botData.bot.tag} by ${botData.owner.tag} with prefix ${botData.prefix}`);
         } catch(error) {
-        if (error.message === '[HDAPI] Bot not found') return message.channel.send('The bot ID you provided is not registered *yet* on HD Developement');
+        if (error.message === '[HDAPI] Bot not found') return message.channel.send('The bot ID you provided is not registered *yet* on HD Developement.');
         }
         });
     }
