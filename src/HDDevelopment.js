@@ -14,13 +14,14 @@ module.exports = class HDDevelopment {
     this.baseURL = 'hd-development.glitch.me';
     this.baseAPIURL = this.baseURL + '/api';
     const request = new HDRequest(this.baseURL);
+    if(!token) throw new Error('[HDAPI] token options must be supplied.');
     if(!clientID) throw new ReferenceError('[HDAPI] clientID options must be supplied.');
     if (isNaN(clientID)) throw new TypeError('[HDAPI] Invalid clientID options');
     this.version = require('../package.json').version;
     
     if (token || token !== undefined || token !== '') {
-	tokenValidator(token, request).then(valid => {
-		if (valid === "false") throw new Error('[HDAPI] 401 Unauthorized invalid token.');
+	tokenValidator(token, request).then(isValid => {
+		if (isValid === "false") throw new Error('[HDAPI] 401 Unauthorized invalid token.');
 });
 }
     /**

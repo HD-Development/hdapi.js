@@ -11,9 +11,10 @@ An API Wrapper for [HD Development API](https://hd-development.glitch.me/api/bot
 		</p>
 </div>
 
-> [Documentation ( WIP )](https://hd-development.github.io)
+##### Join our Discord server [here]() then use the command: `#!token` to get your HD Development API Token.
 
-## How to install
+<br>
+## Instalation
 ```bash
 npm install hdapi.js
 ```
@@ -27,8 +28,7 @@ const HDdev = require('hddapi.js');
 
 const bot = new Discord.Client();
 
-// In the future, This will requires you to have an access token to HD API
-const HDapi = new HDdev("your bot's user id", "your id / bot owner id");
+const HDapi = new HDdev("HD Development API Token", "your bot's user id");
 
 bot.on('ready', () => console.log("Ready!"));
 
@@ -56,8 +56,7 @@ const HDdev = require('hdapi.js');
 
 const bot = new Discord.Client();
 
-// In the future, This will requires you to have an access token to HD API
-const HDapi = new HDdev("your bot's user id", "your id / bot owner id");
+const HDapi = new HDdev("HD Development API Token", "your bot's user id");
 
 bot.on('ready', () => console.log("Ready!"));
 
