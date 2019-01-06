@@ -10,16 +10,19 @@ module.exports = class HDDevelopment {
   /**
   * Create new HDDevelopment Wrapper Client
   */
-  constructor(clientID, ownerID){
+  constructor(token, clientID){
     this.baseURL = 'hd-development.glitch.me';
     this.baseAPIURL = this.baseURL + '/api';
     const request = new HDRequest(this.baseURL);
     if(!clientID) throw new ReferenceError('[HDAPI] clientID options must be supplied.');
     if (isNaN(clientID)) throw new TypeError('[HDAPI] Invalid clientID options');
-    if (!ownerID) throw new ReferenceError('[HDAPI] ownerID options must be supplied.');
-    if (isNaN(ownerID)) throw new TypeError('[HDAPI] Invalid ownerID options');
     this.version = require('../package.json').version;
     
+    if (token || token !== undefined || token !== '') {
+	tokenValidator(token, request).then(valid => {
+		if (valid === "false") throw new Error('[HDAPI] 401 Unauthorized invalid token.');
+});
+}
     /**
     * HDRequest Client for creating requests
     * @private
@@ -72,6 +75,13 @@ module.exports = class HDDevelopment {
         };
     }
   };
+
+  async function tokenValidator(token, request) { //eslint-disable-line no-unused-vars
+    var response = await request.post('authorize', { token: token });
+    var body = await response.body;
+    if (body.valid === false) return "false";
+    else return "true";
+}
 
 async function fetchUser(userID, request) {
     let { body: user } = await request.get(`fetchUser?id=${userID}`);
