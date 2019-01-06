@@ -14,7 +14,7 @@ module.exports = class HDDevelopment {
     this.baseURL = 'hd-development.glitch.me';
     this.baseAPIURL = this.baseURL + '/api';
     const request = new HDRequest(this.baseURL);
-    if(!token) throw new Error('[HDAPI] token options must be supplied.');
+    if(!token) throw new ReferenceError('[HDAPI] token options must be supplied.');
     if(!clientID) throw new ReferenceError('[HDAPI] clientID options must be supplied.');
     if (isNaN(clientID)) throw new TypeError('[HDAPI] Invalid clientID options');
     this.version = require('../package.json').version;
@@ -24,6 +24,7 @@ module.exports = class HDDevelopment {
 		if (isValid === "false") throw new Error('[HDAPI] 401 Unauthorized invalid token.');
 });
 }
+
     /**
     * HDRequest Client for creating requests
     * @private
