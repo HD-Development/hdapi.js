@@ -1,6 +1,6 @@
 {
   "name": "hdapi.js",
-  "version": "0.3.0-beta",
+  "version": "0.3.1",
   "description": "A simple library for connecting with the https://hd-development.glitch.me API.",
   "main": "index.js",
   "scripts": {

@@ -11,9 +11,10 @@ An API Wrapper for [HD Development API](https://hd-development.glitch.me/api/bot
 		</p>
 </div>
 
-##### Join our Discord server [here]() then use the command: `#!token` to get your HD Development API Token.
 
-<br>
+#### Join our Discord server [here]() then use the command: `#!token` to get your HD Development API Token.
+
+
 ## Instalation
 ```bash
 npm install hdapi.js
