@@ -30,8 +30,8 @@ module.exports = class HDDevelopment {
     
     /**
     *  Get any specified bot data using bot id
-    * @param {string} ID Bot's user ID
-    * @returns {object} A promise that contains data of the bot
+    * @param {String} ID Bot's user ID
+    * @returns {Promise<Object>} A promise that contains data of the bot
     */
 
     this.getBot = async (ID) => {
