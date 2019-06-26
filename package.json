@@ -4,7 +4,8 @@
   "description": "A simple library for connecting with the https://hd-development.glitch.me API.",
   "main": "index.js",
   "scripts": {
-    "test": "eslint --ignore-path .gitignore ."
+    "test": "eslint --ignore-path .gitignore .", 
+    "docs": "jsdoc -c .jsdoc.json -t ./node_modules/better-docs"
   },
   "repository": {
     "type": "git",

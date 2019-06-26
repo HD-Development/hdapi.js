@@ -2,14 +2,11 @@ const HDRequest = require('./HDRequest.js');
 const FetchError = require('./structures/FetchError.js');
 
 /**
-* HDDevelopment Client
+* @class HDDevelopment
+* @classdesc hdapi.js - HDDevelopment client
 */
 
 module.exports = class HDDevelopment {
-  
-  /**
-  * Create new HDDevelopment Wrapper Client
-  */
   constructor(token, clientID){
     this.baseURL = 'hd-development.glitch.me';
     this.baseAPIURL = this.baseURL + '/api';
@@ -33,9 +30,10 @@ module.exports = class HDDevelopment {
     
     /**
     *  Get any specified bot data using bot id
-    * @param {String} ID Bot's user ID
-    * @returns {Promise<Object>} A promise that contains data of the bot
+    * @param {string} ID Bot's user ID
+    * @returns {object} A promise that contains data of the bot
     */
+
     this.getBot = async (ID) => {
     if (!ID || !clientID) throw new ReferenceError('[HDAPI:getBot] The bot ID must be supplied.');
     var userID = ID || clientID;
