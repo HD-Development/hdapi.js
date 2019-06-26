@@ -24,6 +24,8 @@
   "author": "Sharif",
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^6.0.1"
+    "better-docs": "^1.1.6",
+    "eslint": "^6.0.1",
+    "jsdoc": "^3.6.2"
   }
 }
