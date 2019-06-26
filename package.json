@@ -24,6 +24,6 @@
   "author": "Sharif",
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^5.16.0"
+    "eslint": "^6.0.1"
   }
 }
