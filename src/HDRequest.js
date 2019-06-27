@@ -4,7 +4,7 @@ const version = require('../package.json').version;
 class HDRequest {
     /**
      * Creates HDRequest Client
-     * @param {String} baseAPIUrl BaseAPIURL to use
+     * @type {string}
      * @private
      */
     constructor(baseURL) {
@@ -14,9 +14,9 @@ class HDRequest {
 
         /**
          * Creates a GET request
-         * @param {String} endpoint API Endpoint to use.
+         * @type {string}
          * @private
-         * @returns {Promise<Object>} A Promise containing response
+         * @returns {Promise<object>}
          */
         this.get = (endpoint) => {
             return new Promise((resolve, reject) => {
@@ -64,11 +64,11 @@ class HDRequest {
         };
 
         /**
-         * Creates a POST request
-         * @param {String} endpoint API Endpoint to use.
-         * @param {String} data Data to send
+         * Creates a POST request to sending a data
+         * @param {string} endpoint 
+         * @param {string} data
          * @private
-         * @returns {Promise<Object>} A Promise containing response
+         * @returns {Promise<object>}
          */
         this.post = (endpoint, data) => {
             return new Promise((resolve, reject) => {

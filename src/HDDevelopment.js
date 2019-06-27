@@ -3,9 +3,8 @@ const FetchError = require('./structures/FetchError.js');
 
 /**
 * @class HDDevelopment
-* @classdesc hdapi.js - HDDevelopment client
+* @classdesc hdapi.js - An API wrapper for https://hd-development.glitch.me
 */
-
 module.exports = class HDDevelopment {
   constructor(token, clientID){
     this.baseURL = 'hd-development.glitch.me';
@@ -30,10 +29,9 @@ module.exports = class HDDevelopment {
     
     /**
     *  Get any specified bot data using bot id
-    * @param {String} ID Bot's user ID
-    * @returns {Promise<Object>} A promise that contains data of the bot
+    * @type {string}
+    * @returns {Promise<object>}
     */
-
     this.getBot = async (ID) => {
     if (!ID || !clientID) throw new ReferenceError('[HDAPI:getBot] The bot ID must be supplied.');
     var userID = ID || clientID;
