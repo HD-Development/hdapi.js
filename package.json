@@ -4,8 +4,8 @@
   "description": "A simple library for connecting with the https://hd-development.glitch.me API.",
   "main": "index.js",
   "scripts": {
-    "test": "eslint --ignore-path .gitignore .", 
-    "docs": "jsdoc -c .jsdoc.json -t ./node_modules/better-docs"
+    "test": "eslint --ignore-path .gitignore .",
+    "docs": "jsdoc -c .jsdoc.json"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
   "author": "Sharif",
   "dependencies": {},
   "devDependencies": {
-    "better-docs": "^1.1.6",
+    "docdash": "^1.1.1",
     "eslint": "^6.0.1",
     "jsdoc": "^3.6.2"
   }
