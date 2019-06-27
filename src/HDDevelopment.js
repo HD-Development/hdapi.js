@@ -54,13 +54,15 @@ module.exports = class HDDevelopment {
     * @private
     */
     this._request = request;
-    
+
+}
+
     /**
     *  Get any specified bot data using bot ID
     * @param {string} ID
     * @returns {Promise<object>}
     */
-    this.getBot = async (ID) => {
+    getBot = async (ID) => {
     if (!ID || !this.clientID) throw new ReferenceError('[HDAPI:getBot] The bot ID must be supplied.');
     var userID = ID || this.clientID;
     const response = await request.get(`bots/${userID}`);
@@ -98,9 +100,8 @@ module.exports = class HDDevelopment {
                 accepted: bodyRaw.accepted
             };
             return body;
-        };
-    }
-  };
+    };
+};
 
   /**
   * API access token validator
