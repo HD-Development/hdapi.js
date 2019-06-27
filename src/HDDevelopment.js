@@ -24,12 +24,14 @@ class HDDevelopment {
 		/**
 		* Website URL
 		* @type {string}
+		* @private
 		*/
 		this.baseURL = 'hd-development.glitch.me';
 		
 		/**
 		* Base Api URL 
 		* @type {string}
+		* @private
 		*/
 		this.baseAPIURL = this.baseURL + '/api';
 		
@@ -61,15 +63,15 @@ class HDDevelopment {
     * @param {string} ID
     * @returns {Promise<object>}
     */
-    getBot = async (ID) => {
-    if (!ID || !this.clientID) throw new ReferenceError('[HDAPI:getBot] The bot ID must be supplied.');
-    var userID = ID || this.clientID;
-    const response = await request.get(`bots/${userID}`);
-    const bodyRaw = await response.body;
-    if (bodyRaw.error === "bot_not_found")  throw new FetchError('[HDAPI] Bot not found');
+    async getBot(ID) {
+      if (!ID || !this.clientID) throw new ReferenceError('[HDAPI:getBot] The bot ID must be supplied.');
+      var userID = ID || this.clientID;
+      const response = await request.get(`bots/${userID}`);
+      const bodyRaw = await response.body;
+      if (bodyRaw.error === "bot_not_found")  throw new FetchError('[HDAPI] Bot not found');
       const owner = await fetchUser(bodyRaw.ownerID, request);
-            const botUser = await fetchUser(bodyRaw.botID, request);
-            const body = {
+      const botUser = await fetchUser(bodyRaw.botID, request);
+      const body = {
                 owner: {
                     id: owner.id,
                     username: owner.username,
