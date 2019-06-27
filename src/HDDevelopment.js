@@ -151,3 +151,5 @@ async function fetchUser(userID, request) {
 
     return userResolved;
 }
+
+module.exports = HDDevelopment;
