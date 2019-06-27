@@ -60,7 +60,7 @@ class HDDevelopment {
 
     /**
     * Get any specified bot data using bot ID
-    * @param {string} ID
+    * @param {string} ID the bot ID to get their data
     * @returns {Promise<object>}
     */
     async getBot(ID) {
