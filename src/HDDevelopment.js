@@ -58,7 +58,7 @@ module.exports = class HDDevelopment {
 }
 
     /**
-    *  Get any specified bot data using bot ID
+    * Get any specified bot data using bot ID
     * @param {string} ID
     * @returns {Promise<object>}
     */
