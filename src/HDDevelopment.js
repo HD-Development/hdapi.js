@@ -6,20 +6,48 @@ const FetchError = require('./structures/FetchError.js');
 * @classdesc hdapi.js - An API wrapper for https://hd-development.glitch.me
 */
 module.exports = class HDDevelopment {
-  constructor(token, clientID){
-    this.baseURL = 'hd-development.glitch.me';
-    this.baseAPIURL = this.baseURL + '/api';
-    const request = new HDRequest(this.baseURL);
-    if(!token) throw new ReferenceError('[HDAPI] token options must be supplied.');
-    if(!clientID) throw new ReferenceError('[HDAPI] clientID options must be supplied.');
-    if (isNaN(clientID)) throw new TypeError('[HDAPI] Invalid clientID options');
-    this.version = require('../package.json').version;
+  constructor(options = {}) {
     
-    if (token || token !== undefined || token !== '') {
-	tokenValidator(token, request).then(isValid => {
-		if (isValid === "false") throw new Error('[HDAPI] 401 Unauthorized invalid token.');
-});
-}
+    /**
+    * The token will be used for authorization
+    * @type {string}
+    */
+    this.token = options.token;
+    
+    /**
+    * Your bot ID
+    * @type {string}
+    */
+    this.clientID = options.clientID;
+    
+    /**
+    * Website URL
+    * @type {string}
+    */
+    this.baseURL = 'hd-development.glitch.me';
+    
+    /**
+    * Base Api URL 
+    * @type {string}
+    */
+    this.baseAPIURL = this.baseURL + '/api';
+    
+    /**
+    * A version of this module 
+    */
+    this.version = require('../package.json').version;
+
+    const request = new HDRequest(this.baseURL);
+    if (!this.token) throw new ReferenceError('[HDAPI] token options must be supplied');
+    if (typeof this.token !== 'string') throw new TypeError('[HDAPI] token must be a string');
+    if (!this.clientID) throw new ReferenceError('[HDAPI] clientID options must be supplied');
+    if (typeof this.clientID !== 'string') throw new TypeError('[HDAPI] clientID must be a string');
+    
+    if (this.token || this.token !== undefined || this.token !== '') {
+      tokenValidator(this.token, request).then(isValid => {
+        if (isValid === "false") throw new Error('[HDAPI] 401 Unauthorized invalid token.');
+       });
+     }
 
     /**
     * HDRequest Client for creating requests
@@ -28,13 +56,13 @@ module.exports = class HDDevelopment {
     this._request = request;
     
     /**
-    *  Get any specified bot data using bot id
-    * @type {string}
+    *  Get any specified bot data using bot ID
+    * @param {string} ID
     * @returns {Promise<object>}
     */
     this.getBot = async (ID) => {
-    if (!ID || !clientID) throw new ReferenceError('[HDAPI:getBot] The bot ID must be supplied.');
-    var userID = ID || clientID;
+    if (!ID || !this.clientID) throw new ReferenceError('[HDAPI:getBot] The bot ID must be supplied.');
+    var userID = ID || this.clientID;
     const response = await request.get(`bots/${userID}`);
     const bodyRaw = await response.body;
     if (bodyRaw.error === "bot_not_found")  throw new FetchError('[HDAPI] Bot not found');
@@ -74,13 +102,27 @@ module.exports = class HDDevelopment {
     }
   };
 
-  async function tokenValidator(token, request) { //eslint-disable-line no-unused-vars
+  /**
+  * API access token validator
+  * @param {string} token
+  * @param {object} request
+  * @private 
+  * @returns {Promise<boolean>}
+  */
+async function tokenValidator(token, request) { //eslint-disable-line no-unused-vars
     var response = await request.post('authorize', { token: token });
     var body = await response.body;
     if (body.valid === false) return "false";
     else return "true";
 }
 
+ /**
+ * Fetching the user - using to fetching the owner of the bot
+ * @param {string} userID
+ * @param {object} request 
+ * @private 
+ * @returns {Promise<object>}
+ */
 async function fetchUser(userID, request) {
     let { body: user } = await request.get(`fetchUser?id=${userID}`);
 
