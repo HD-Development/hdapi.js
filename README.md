@@ -30,7 +30,7 @@ const HDdev = require('hddapi.js');
 
 const bot = new Discord.Client();
 
-const HDapi = new HDdev({ token: 'HD Development API Token', clientID: 'your bot's user id' });
+const HDapi = new HDdev({ token: "HD Development API Token", clientID: "your bot's user id" });
 
 bot.on('ready', () => console.log("Ready!"));
 
@@ -58,7 +58,7 @@ const HDdev = require('hdapi.js');
 
 const bot = new Discord.Client();
 
-const HDapi = new HDdev({ token: 'HD Development API Token', clientID: 'your bot's user id' });
+const HDapi = new HDdev({ token: "HD Development API Token", clientID: "your bot's user id" });
 
 bot.on('ready', () => console.log("Ready!"));
 
