@@ -3,6 +3,3 @@
 
 # ignore folder and files
 /node_modules
-
-# misc 
-.jsdoc.json
